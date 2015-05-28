@@ -1,4 +1,4 @@
-# aocai
-inject zepck bootstrap validator gulp boom!
-###### zepck+bootstrap+util(formValidator)
+# angualr
+test for spa inproject
+###### just bootstrap angular gulp
 ###### gulp inject 
