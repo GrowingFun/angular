@@ -9,6 +9,10 @@ var app = angular.module('h5_angularjs', ['ngRoute'])
       templateUrl: 'view/next.html',
       controller: 'next'
     })
+    .when('/form', {
+      templateUrl: 'view/form.html',
+      controller: 'form'
+    })
     .when('/day/:id', {
       templateUrl: 'view/day.html',
       controller: 'DayCtrl'
@@ -26,5 +30,9 @@ app.controller("homepage", ["$scope",function($scope) {
 ]);
 app.controller("next", ["$scope",function($scope) {
         console.log("next")
+    }
+]);
+app.controller("form", ["$scope",function($scope) {
+        console.log("form")
     }
 ]);
