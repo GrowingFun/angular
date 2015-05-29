@@ -1,7 +1,7 @@
 {
   "name": "bruce",
   "version": "1.0.0",
-  "dateVersion": "20150312",
+  "dateVersion": "20150528",
   "devDependencies": {
     "del": "^1.1.1",
     "gulp": "^3.8.10",
