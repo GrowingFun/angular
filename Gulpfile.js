@@ -9,7 +9,7 @@ var fs = require('fs'),
     plugins = gulpLoadPlugins();
 
 var serverPath = './src/',//服务器资源路径
-	rootPath = './src',//根性
+    rootPath = './src',//根性
     staticDir = 'src/app/',//静态资源根目录
     lessFiles = staticDir + '**/*.less',//less文件路径
     hashFiles = staticDir + '**/*.min',//hash处理文件 hashFiles+".js"
