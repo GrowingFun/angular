@@ -21,3 +21,22 @@ app.config(function($routeProvider) {
       redirectTo: '/'
     });
 });
+app.controller("form", ["$scope",function($scope) {
+        $scope.form = {
+            firstName: "form"
+        };
+    }
+]);
+app.controller("next", ["$scope",function($scope) {
+        $scope.next = {
+            firstName: "next"
+        };
+    }
+]);
+app.controller("homepage", ["$scope",function($scope) {
+        $scope.person = {
+            firstName: "John",
+            lastName: "Doe"
+        };
+    }
+]);
