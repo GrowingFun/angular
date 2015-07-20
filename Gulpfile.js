@@ -34,6 +34,7 @@ gulp.task('less-min',function(){
 gulp.task("js-min",function(){
    return gulp.src(jsArr)
         .pipe(plugins.concat("app.min.js"))
+        .pipe(plugins.uglify({outSourceMap: false}))
         .pipe(gulp.dest("src/app/"));
 });
 

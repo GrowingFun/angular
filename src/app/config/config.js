@@ -1,5 +1,5 @@
 var app = angular.module('h5_angularjs', ['ngRoute']);
-app.config(function($routeProvider) {
+app.config(["$routeProvider",function($routeProvider) {
   $routeProvider
     .when('/', {
       templateUrl: 'view/homepage.html',
@@ -20,4 +20,5 @@ app.config(function($routeProvider) {
     .otherwise({
       redirectTo: '/'
     });
-});
+  }
+]);
