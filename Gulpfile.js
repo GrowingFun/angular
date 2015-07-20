@@ -5,6 +5,7 @@ var fs = require('fs'),
     rev = require('gulp-rev'),
     inject = require('gulp-inject'),
     minifycss = require("gulp-minify-css"),
+    stripDebug = require('gulp-strip-debug'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     plugins = gulpLoadPlugins();
 
@@ -33,8 +34,9 @@ gulp.task('less-min',function(){
 
 gulp.task("js-min",function(){
    return gulp.src(jsArr)
-        .pipe(plugins.concat("app.min.js"))
+        .pipe(stripDebug())
         .pipe(plugins.uglify({outSourceMap: false}))
+        .pipe(plugins.concat("app.min.js"))
         .pipe(gulp.dest("src/app/"));
 });
 
