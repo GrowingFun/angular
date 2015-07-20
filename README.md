@@ -11,3 +11,6 @@ angular.module("MyMod").controller("MyCtrl", function($scope, $timeout) {
 angular.module("MyMod").controller("MyCtrl", ["$scope", "$timeout", function($scope, $timeout) {  
 }]);
 ```
+
+######js文件压缩为一行 先合并再执行压缩流
+######js一个文件为一行 先压缩流再执行合并
