@@ -1,11 +1,6 @@
 var fs = require('fs'),
     gulp = require("gulp"),
-    gutil = require("gulp-util"),
     plumber = require('gulp-plumber'),
-    rev = require('gulp-rev'),
-    inject = require('gulp-inject'),
-    minifycss = require("gulp-minify-css"),
-    stripDebug = require('gulp-strip-debug'),
     gulpLoadPlugins = require('gulp-load-plugins'),
     plugins = gulpLoadPlugins();
 
@@ -28,14 +23,19 @@ gulp.task('less-min',function(){
         .pipe(plugins.less({
             relativeUrls: true
         }))
-        .pipe(minifycss())
+        .pipe(plugins.minifyCss())
         .pipe(gulp.dest( staticDir ));
 });
 
 gulp.task("js-min",function(){
    return gulp.src(jsArr)
-        .pipe(stripDebug())
-        .pipe(plugins.uglify({outSourceMap: false}))
+        .pipe(plugins.uglify({
+            mangle: true,
+            compress: {
+                drop_console: true
+            },
+            outSourceMap: false
+        }))
         .pipe(plugins.concat("app.min.js"))
         .pipe(gulp.dest("src/app/"));
 });
@@ -57,7 +57,7 @@ gulp.task("clean",function(){
 
 gulp.task("rev",["min"],function(){
     return gulp.src( [ staticDir + "*.min.css", staticDir + "*.min.js"] )
-        .pipe(rev())
+        .pipe(plugin.rev())
         .pipe(gulp.dest( staticDir ));
 });
 
@@ -68,7 +68,7 @@ gulp.task('min',["clean"],function(){
 gulp.task('inject',["rev"],function(){
     var target = gulp.src( 'src/app/index.html' );
     var sources = gulp.src( ['src/app/app.min-*.js','src/app/app.min-*.css'] , {read: false});
-    return target.pipe(inject(sources , {
+    return target.pipe(plugin.inject(sources , {
         ignorePath : ['.','src']
     }))
     .pipe(gulp.dest( 'src/app/' ));
