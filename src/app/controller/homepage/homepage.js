@@ -3,6 +3,5 @@ app.controller("homepage", ["$scope",function($scope) {
             firstName: "John",
             lastName: "Doe"
         };
-        console.log("fuck");
     }
 ]);
