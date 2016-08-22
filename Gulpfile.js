@@ -16,7 +16,8 @@ var serverPath = './src/',//服务器资源路径
     ];
 
 gulp.task('look', function () {
-    gulp.watch([lessFiles], ['less-min','js-min']);
+    gulp.watch([lessFiles], ['less-min']);
+    gulp.watch([jsArr], ['js-min']);
 });
 gulp.task('less-min',function(){
   return gulp.src( [lessFiles] )
@@ -29,13 +30,12 @@ gulp.task('less-min',function(){
 
 gulp.task("js-min",function(){
    return gulp.src(jsArr)
-        .pipe(plugins.uglify({
-            mangle: true,
-            compress: {
-                drop_console: true
-            },
-            outSourceMap: false
-        }))
+        // .pipe(plugins.uglify({
+        //     mangle: true,
+        //     compress: {
+        //         drop_console: true
+        //     }
+        // }))
         .pipe(plugins.concat("app.min.js"))
         .pipe(gulp.dest("src/app/"));
 });
